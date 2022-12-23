@@ -1,9 +1,8 @@
 const canvas = document.querySelector('canvas');
 const canvasContext = canvas.getContext('2d');
 
-canvas.width = 1024;
-canvas.height = 576;
-
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 canvasContext.fillRect(0,0,canvas.width,canvas.height);
 
 const gravity = 0.7;
@@ -23,7 +22,7 @@ class Sprite{
         x:this.position.x,
         y:this.position.y
       },
-      width:canvas.width/5,
+      width:canvas.width/10,
       height :canvas.height/10,
       offset:{
         x:offset.x,
@@ -117,7 +116,7 @@ const player2 = new Sprite({
   },
   color:'blue',
   offset:{
-    x:canvas.width/5 -canvas.width/20,
+    x:canvas.width/10 -canvas.width/20,
     y:0
   },
   canvas:{

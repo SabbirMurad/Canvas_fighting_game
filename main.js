@@ -6,7 +6,7 @@ canvas.height = 576;
 
 canvasContext.fillRect(0,0,canvas.width,canvas.height);
 
-const gravity = 0.2;
+const gravity = 0.7;
 
 //creating the class that will create the players 
 class Sprite{
@@ -14,6 +14,7 @@ class Sprite{
     this.position = position;
     this.velocity = velocity;
     this.height = 150;
+    this.lastkey;
   }
 
   draw(){
@@ -75,8 +76,6 @@ const keys ={
   },
 }
 
-let lastkey;
-let lastkey2;
 //looping animatin
 function animate(){
   window.requestAnimationFrame(animate)
@@ -85,20 +84,22 @@ function animate(){
   player1.update();
   player2.update();
 
+  //player 1 movement
   player1.velocity.x = 0 ;
-  if(keys.a.pressed && lastkey ==='a'){
-    player1.velocity.x = -2.5;
+  if(keys.a.pressed && player1.lastkey ==='a'){
+    player1.velocity.x = -5;
   }
-  else if(keys.d.pressed && lastkey ==='d'){
-    player1.velocity.x = 2.5;
+  else if(keys.d.pressed && player1.lastkey ==='d'){
+    player1.velocity.x = 5;
   }
 
+  //player 2 movement
   player2.velocity.x = 0 ;
-  if(keys.ArrowLeft.pressed && lastkey2 ==='ArrowLeft'){
-    player2.velocity.x = -2.5;
+  if(keys.ArrowLeft.pressed && player2.lastkey ==='ArrowLeft'){
+    player2.velocity.x = -5;
   }
-  else if(keys.ArrowRight.pressed && lastkey2 ==='ArrowRight'){
-    player2.velocity.x = 2.5;
+  else if(keys.ArrowRight.pressed && player2.lastkey ==='ArrowRight'){
+    player2.velocity.x = 5;
   }
 }
 
@@ -108,25 +109,25 @@ window.addEventListener('keydown',(e)=>{
   switch (e.key){
     case 'd':
     keys.d.pressed = true
-    lastkey = 'd';
+    player1.lastkey = 'd';
     break;
     case 'a':
     keys.a.pressed = true 
-    lastkey = 'a';
+    player1.lastkey = 'a';
     break;
     case 'w' :
-    player1.velocity.y = -10;
+    player1.velocity.y = -20;
     break;
     case 'ArrowRight':
     keys.ArrowRight.pressed = true;
-    lastkey2 = 'ArrowRight';
+    player2.lastkey = 'ArrowRight';
     break;
     case 'ArrowLeft':
     keys.ArrowLeft.pressed = true;
-    lastkey2 = 'ArrowLeft';
+    player2.lastkey = 'ArrowLeft';
     break;
     case 'ArrowUp' :
-    player2.velocity.y = -10;
+    player2.velocity.y = -20;
     break;
   }
 })

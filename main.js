@@ -1,14 +1,4 @@
-const canvas = document.querySelector('canvas');
-const canvasContext = canvas.getContext('2d');
-
-const container = document.querySelector('.container');
-let player1Helth = container.querySelector('.player1_helthbar')
-let player2Helth = container.querySelector('.player2_helthbar')
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
 canvasContext.fillRect(0,0,canvas.width,canvas.height);
-
-const gravity = 0.7;
 
 //creating the class that will create the players 
 class Sprite{
@@ -71,7 +61,7 @@ class Sprite{
     }
     if( 
       this.position.x+this.velocity.x>=0 &&
-      this.position.x+this.width+this.velocity.x <= canvas.clientWidth
+      this.position.x+this.width+this.velocity.x <= canvas.width
     ){
       this.position.x+=this.velocity.x;
     }
@@ -95,7 +85,7 @@ class Sprite{
 // creating the player 1
 const player1 = new Sprite({
   position:{
-    x:0,
+    x:200,
     y:0
   },
   velocity:{
@@ -116,7 +106,7 @@ const player1 = new Sprite({
 //creating the player 2
 const player2 = new Sprite({
   position:{
-    x:800,
+    x:canvas.width-200-canvas.width/25,
     y:0
   },
   velocity:{
@@ -134,23 +124,6 @@ const player2 = new Sprite({
   }
 })
 
-//keys
-const keys ={
-  a:{
-    pressed : false
-  },
-  d:{
-    pressed : false
-  },
-  ArrowRight:{
-    pressed : false
-  },
-  ArrowLeft:{
-    pressed : false
-  },
-}
-//helth remaining
-let player1HelthRemain=100,player2HelthRemain=100;
 //looping animatin
 function animate(){
   window.requestAnimationFrame(animate)
@@ -193,17 +166,6 @@ function animate(){
   }
 }
 animate()
-
-//check if can attack
-function canAttack(attacker,defender){
-    return (
-      (attacker.attackBox.position.x + attacker.attackBox.width) >= defender.position.x && 
-      attacker.attackBox.position.x <= (defender.position.x + defender.width) &&
-      (attacker.attackBox.position.y + attacker.attackBox.height) >= defender.position.y &&
-      attacker.attackBox.position.y <= (defender.position.y + defender.height) &&
-      attacker.isAttacking
-    );
-}
 //movements and attacts on key press 
 window.addEventListener('keydown',(e)=>{
   switch (e.key){

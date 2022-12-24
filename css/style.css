@@ -36,17 +36,15 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(255, 255, 255, 0.301);
+  background-color: rgba(0, 0, 0, 0.356);
   z-index: 200;
 }
 .container_info .reload_button {
   width: 100px;
   height: 100px;
   margin: 20px 0;
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-  fill: #fff;
-  background-color: rgba(0, 0, 0, 0.123);
+  -webkit-transform: rotate(110deg);
+          transform: rotate(110deg);
 }
 
 .container_helthbar {

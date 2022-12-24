@@ -1,6 +1,7 @@
 //necesarry properties
 const canvas = document.querySelector('canvas');
 const canvasContext = canvas.getContext('2d');
+canvasContext.fillRect(0,0,canvas.width,canvas.height);
 const gravity = 0.7;
 const containerInfo = document.querySelector('.container_info');
 const gameOverText = containerInfo.querySelector('.game_over_text');
@@ -10,10 +11,10 @@ const containerHelth = document.querySelector('.container_helthbar');
 let player1Helth = containerHelth.querySelector('.player1_helthbar');
 let player2Helth = containerHelth.querySelector('.player2_helthbar');
 let timer = containerHelth.querySelector('.timer');
+
+let totalTime =10;
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-//helth remaining
-let player1HelthRemain=100,player2HelthRemain=100;
 //keys
 const keys ={
   a:{
@@ -42,14 +43,14 @@ function canAttack(attacker,defender){
 }
 
 //timer function
-let timeCount = 9
+let timeCount = totalTime
 timer.innerHTML=timeCount;
+let counting
 function countdown(){
-  let counting = setInterval(()=>{
+  counting = setInterval(()=>{
     timeCount--;
     timer.innerHTML=timeCount;
     if(timeCount<=0){
-      clearInterval(counting);
       gameover();
     }
   },1000)
@@ -58,16 +59,15 @@ countdown();
 
 //gameover
 function gameover(){
-  if(player1HelthRemain===player2HelthRemain){
-    containerInfo.style.display='flex';
+  clearInterval(counting);
+  containerInfo.style.display='flex';
+  if(player1.helth===player2.helth){
     gameOverText.innerText=`Draw`;
   }
-  else if(player1HelthRemain<=player2HelthRemain){
-    containerInfo.style.display='flex';
+  else if(player1.helth<=player2.helth){
     gameOverText.innerHTML=`player 2 wins`;
   }
   else{
-    containerInfo.style.display='flex';
     gameOverText.innerHTML=`player 1 wins`;
   }
 }
@@ -75,4 +75,18 @@ function gameover(){
 // reload game
 reloadBtn.addEventListener('click',()=>{
   containerInfo.style.display='none';
+  timeCount =totalTime;
+  timer.innerHTML=timeCount;
+
+  player1.helth=100;
+  player2.helth=100;
+  player1Helth.querySelector('.yellow_foreground').style.width='100%';
+  player1Helth.querySelector('.red_background').style.width='100%';
+  player2Helth.querySelector('.yellow_foreground').style.width='100%';
+  player2Helth.querySelector('.red_background').style.width='100%';
+
+  countdown();
+
+  player1.position.x=200;
+  player2.position.x=canvas.width-200-canvas.width/25;
 })

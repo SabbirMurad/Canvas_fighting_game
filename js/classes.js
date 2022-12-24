@@ -50,6 +50,12 @@ class Fighter{
   update(){
     this.draw();
 
+    if(this.lastkey === 'a'){
+      this.attackBox.offset.x = this.attackBox.width - this.width;
+    }
+    if(this.lastkey === 'ArrowRight'){
+      this.attackBox.offset.x=0;
+    }
     this.attackBox.position.x = this.position.x -this.attackBox.offset.x;
     this.attackBox.position.y = this.position.y;
 
@@ -95,6 +101,30 @@ class Sprite{
 
   draw(){
     canvasContext.drawImage(this.image,this.position.x,this.position.y,this.width,this.height)
+  }
+
+  update(){
+    this.draw();
+  }
+}
+class AnimateSprite{
+  constructor({position,size, imageSrc}){
+    this.position = position;
+    this.height = size.height;
+    this.width = size.width;
+    this.image = new Image()
+    this.image.src = imageSrc
+  }
+
+  draw(){
+    canvasContext.drawImage(
+      this.image,
+      
+      this.position.x,
+      this.position.y,
+      this.width,
+      this.height
+    )
   }
 
   update(){

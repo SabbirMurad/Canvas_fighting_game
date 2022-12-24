@@ -118,7 +118,7 @@ const rock3 = new Sprite({
     width:canvas.width/25
   },
   position:{
-    x:(canvas.width/1.5),
+    x:(canvas.width/2),
     y:canvas.height/1.23
   },
   imageSrc:'/game_assets/decorations/rock_2.png'
@@ -190,7 +190,18 @@ const grass2 = new Sprite({
   },
   imageSrc:'/game_assets/decorations/grass_3.png'
 })
-
+//creating the shop
+const shop = new AnimateSprite({
+  size:{
+    height:canvas.height/2.2,
+    width:canvas.width/3.3
+  },
+  position:{
+    x:(canvas.width/1.8),
+    y:canvas.height/2.55
+  },
+  imageSrc:'/game_assets/decorations/shop.png'
+})
 // creating the player 1
 const player1 = new Fighter({
   position:{
@@ -246,6 +257,8 @@ function animate(){
   fence1.update();
   fence2.update();
   fence3.update();
+
+  shop.update();
 
   wall1.update();
   wall2.update();

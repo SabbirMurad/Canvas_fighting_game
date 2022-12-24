@@ -1,6 +1,9 @@
 const canvas = document.querySelector('canvas');
 const canvasContext = canvas.getContext('2d');
 
+const container = document.querySelector('.container');
+let player1Helth = container.querySelector('.player1_helthbar')
+let player2Helth = container.querySelector('.player2_helthbar')
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 canvasContext.fillRect(0,0,canvas.width,canvas.height);
@@ -13,8 +16,8 @@ class Sprite{
     this.color = color;
     this.position = position;
     this.velocity = velocity;
-    this.height = canvas.height/3;
-    this.width = canvas.width/20;
+    this.height = canvas.height/3.5;
+    this.width = canvas.width/25;
     this.lastkey;
     this.offset = offset
     this.attackBox = {
@@ -23,7 +26,7 @@ class Sprite{
         y:this.position.y
       },
       width:canvas.width/10,
-      height :canvas.height/10,
+      height :canvas.height/15,
       offset:{
         x:offset.x,
         y:offset.y
@@ -44,7 +47,7 @@ class Sprite{
 
     //attackBox
     
-    // if(this.isAttacking){
+    if(this.isAttacking){
       canvasContext.fillStyle = "green";
       canvasContext.fillRect(
         this.attackBox.position.x,
@@ -52,7 +55,7 @@ class Sprite{
         this.attackBox.width,
         this.attackBox.height,
       )
-    // }
+    }
   }
 
   update(){
@@ -63,9 +66,15 @@ class Sprite{
 
     this.attackBox.offset.x = this.offset.x;
     this.attackBox.offset.y = this.offset.y;
-
-    this.position.y+=this.velocity.y;
-    this.position.x+=this.velocity.x;
+    if(this.position.y+this.velocity.y>=0){
+      this.position.y+=this.velocity.y;
+    }
+    if( 
+      this.position.x+this.velocity.x>=0 &&
+      this.position.x+this.width+this.velocity.x <= canvas.clientWidth
+    ){
+      this.position.x+=this.velocity.x;
+    }
 
     if(this.position.y + this.height + this.velocity.y>=canvas.height){
       this.velocity.y=0;
@@ -116,7 +125,7 @@ const player2 = new Sprite({
   },
   color:'blue',
   offset:{
-    x:canvas.width/10 -canvas.width/20,
+    x:canvas.width/10 -canvas.width/25,
     y:0
   },
   canvas:{
@@ -140,7 +149,8 @@ const keys ={
     pressed : false
   },
 }
-
+//helth remaining
+let player1HelthRemain=100,player2HelthRemain=100;
 //looping animatin
 function animate(){
   window.requestAnimationFrame(animate)
@@ -168,28 +178,33 @@ function animate(){
   }
 
   //detect for collision
-  if( (player1.attackBox.position.x + player1.attackBox.width) >= player2.position.x && 
-      player1.attackBox.position.x <= (player2.position.x + player2.width) &&
-      (player1.attackBox.position.y + player1.attackBox.height) >= player2.position.y &&
-      player1.attackBox.position.y <= (player2.position.y + player2.height) &&
-      player1.isAttacking
-    ){
+  if(canAttack(player1,player2)){
     player1.isAttacking = false;
-    console.log("player 2 hit");
+    player2HelthRemain-=10;
+    player2Helth.querySelector('.yellow_foreground').style.width=player2HelthRemain+'%';
+    player2Helth.querySelector('.red_background').style.width=player2HelthRemain+'%';
   }
 
-  if( (player2.attackBox.position.x + player2.attackBox.width) >= player1.position.x && 
-      player2.attackBox.position.x <= (player1.position.x + player1.width) &&
-      (player2.attackBox.position.y + player2.attackBox.height) >= player1.position.y &&
-      player2.attackBox.position.y <= (player1.position.y + player1.height) &&
-      player2.isAttacking
-    ){
+  if(canAttack(player2,player1)){
     player2.isAttacking = false;
-    console.log("player 1 hit");
+    player1HelthRemain-=10;
+    player1Helth.querySelector('.yellow_foreground').style.width=player1HelthRemain+'%';
+    player1Helth.querySelector('.red_background').style.width=player1HelthRemain+'%';
   }
 }
 animate()
 
+//check if can attack
+function canAttack(attacker,defender){
+    return (
+      (attacker.attackBox.position.x + attacker.attackBox.width) >= defender.position.x && 
+      attacker.attackBox.position.x <= (defender.position.x + defender.width) &&
+      (attacker.attackBox.position.y + attacker.attackBox.height) >= defender.position.y &&
+      attacker.attackBox.position.y <= (defender.position.y + defender.height) &&
+      attacker.isAttacking
+    );
+}
+//movements and attacts on key press 
 window.addEventListener('keydown',(e)=>{
   switch (e.key){
     //player 1

@@ -1,0 +1,61 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container{
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .player1_helthbar,.player2_helthbar{
+    width: 40%;
+    height: 50%;
+    background-color: transparent;
+    border: 2px solid black;
+    // display: flex;
+    position: relative;
+    .red_background{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: red;
+      transition: width .8s ease;
+    }
+    .yellow_foreground{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: yellow;
+    }
+  }
+  .player1_helthbar{
+    .red_background{
+      right: 0;
+    }
+    .yellow_foreground{
+      right: 0;
+    }
+  }
+  .timer{
+    width: 5%;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #fff;
+    font-weight: 600;
+    height: 100%;
+  }
+}

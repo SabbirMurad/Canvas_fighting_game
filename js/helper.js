@@ -2,13 +2,18 @@
 const canvas = document.querySelector('canvas');
 const canvasContext = canvas.getContext('2d');
 const gravity = 0.7;
-const container = document.querySelector('.container');
-let player1Helth = container.querySelector('.player1_helthbar');
-let player2Helth = container.querySelector('.player2_helthbar');
-let timer = container.querySelector('.timer');
+const containerInfo = document.querySelector('.container_info');
+const gameOverText = containerInfo.querySelector('.game_over_text');
+const reloadBtn = containerInfo.querySelector('.reload_button');
+
+const containerHelth = document.querySelector('.container_helthbar');
+let player1Helth = containerHelth.querySelector('.player1_helthbar');
+let player2Helth = containerHelth.querySelector('.player2_helthbar');
+let timer = containerHelth.querySelector('.timer');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
+//helth remaining
+let player1HelthRemain=100,player2HelthRemain=100;
 //keys
 const keys ={
   a:{
@@ -24,8 +29,6 @@ const keys ={
     pressed : false
   },
 }
-//helth remaining
-let player1HelthRemain=100,player2HelthRemain=100;
 
 //check if can attack
 function canAttack(attacker,defender){
@@ -47,7 +50,29 @@ function countdown(){
     timer.innerHTML=timeCount;
     if(timeCount<=0){
       clearInterval(counting);
+      gameover();
     }
   },1000)
 }
 countdown();
+
+//gameover
+function gameover(){
+  if(player1HelthRemain===player2HelthRemain){
+    containerInfo.style.display='flex';
+    gameOverText.innerText=`Draw`;
+  }
+  else if(player1HelthRemain<=player2HelthRemain){
+    containerInfo.style.display='flex';
+    gameOverText.innerHTML=`player 2 wins`;
+  }
+  else{
+    containerInfo.style.display='flex';
+    gameOverText.innerHTML=`player 1 wins`;
+  }
+}
+
+// reload game
+reloadBtn.addEventListener('click',()=>{
+  containerInfo.style.display='none';
+})

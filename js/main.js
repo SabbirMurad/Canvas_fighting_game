@@ -164,6 +164,11 @@ function animate(){
     player1Helth.querySelector('.yellow_foreground').style.width=player1HelthRemain+'%';
     player1Helth.querySelector('.red_background').style.width=player1HelthRemain+'%';
   }
+
+  //gameover
+  if(player1HelthRemain<=0 || player2HelthRemain<=0){
+    gameover();
+  }
 }
 animate()
 //movements and attacts on key press 

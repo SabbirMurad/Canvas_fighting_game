@@ -90,7 +90,106 @@ const wall5 = new Sprite({
   imageSrc:'/game_assets/walls/wall_4.png'
 })
 //creating the decorations
+const rock1 = new Sprite({
+  size:{
+    height:canvas.height/15,
+    width:canvas.width/15
+  },
+  position:{
+    x:(canvas.width/10)*1.5,
+    y:canvas.height/1.275
+  },
+  imageSrc:'/game_assets/decorations/rock_3.png'
+})
+const rock2 = new Sprite({
+  size:{
+    height:canvas.height/8,
+    width:canvas.width/8
+  },
+  position:{
+    x:(canvas.width/1.08),
+    y:canvas.height/1.38
+  },
+  imageSrc:'/game_assets/decorations/rock_3.png'
+})
+const rock3 = new Sprite({
+  size:{
+    height:canvas.height/25,
+    width:canvas.width/25
+  },
+  position:{
+    x:(canvas.width/1.5),
+    y:canvas.height/1.23
+  },
+  imageSrc:'/game_assets/decorations/rock_2.png'
+})
+const fence1 = new Sprite({
+  size:{
+    height:canvas.height/8,
+    width:canvas.width/5
+  },
+  position:{
+    x:(canvas.width/7),
+    y:canvas.height/1.38
+  },
+  imageSrc:'/game_assets/decorations/fence_1.png'
+})
+const fence2 = new Sprite({
+  size:{
+    height:canvas.height/8,
+    width:canvas.width/5
+  },
+  position:{
+    x:0-(canvas.width/7),
+    y:canvas.height/1.38
+  },
+  imageSrc:'/game_assets/decorations/fence_2.png'
+})
+const fence3 = new Sprite({
+  size:{
+    height:canvas.height/8,
+    width:canvas.width/5
+  },
+  position:{
+    x:(canvas.width/3.1),
+    y:canvas.height/1.38
+  },
+  imageSrc:'/game_assets/decorations/fence_2.png'
+})
 
+const grass1 = new Sprite({
+  size:{
+    height:canvas.height/40,
+    width:canvas.width/35
+  },
+  position:{
+    x:(canvas.width/5.05),
+    y:canvas.height/1.211
+  },
+  imageSrc:'/game_assets/decorations/grass_3.png'
+})
+const sign1 = new Sprite({
+  size:{
+    height:canvas.height/4.8,
+    width:canvas.width/12
+  },
+  position:{
+    x:(canvas.width/1.15),
+    y:canvas.height/1.55
+  },
+  imageSrc:'/game_assets/decorations/sign.png'
+})
+const grass2 = new Sprite({
+  size:{
+    height:canvas.height/40,
+    width:canvas.width/30
+  },
+  position:{
+    x:(canvas.width/2.65),
+    y:canvas.height/1.211
+  },
+  imageSrc:'/game_assets/decorations/grass_3.png'
+})
 
 // creating the player 1
 const player1 = new Fighter({
@@ -139,14 +238,30 @@ function animate(){
   window.requestAnimationFrame(animate)
   canvasContext.fillStyle = 'black';
   canvasContext.fillRect(0,0,canvas.width,canvas.height);
+
   background1.update();
   background2.update();
   background3.update();
+
+  fence1.update();
+  fence2.update();
+  fence3.update();
+
   wall1.update();
   wall2.update();
   wall3.update();
   wall4.update();
   wall5.update();
+
+  sign1.update();
+
+  rock1.update();
+  rock2.update();
+  rock3.update();
+  
+  grass1.update();
+  grass2.update();
+
   player1.update();
   player2.update();
 

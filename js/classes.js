@@ -65,7 +65,7 @@ class Fighter{
       this.position.x+=this.velocity.x;
     }
 
-    if(this.position.y + this.height + this.velocity.y>=canvas.height){
+    if(this.position.y + this.height + this.velocity.y>=canvas.height/1.17){
       this.velocity.y=0;
     }
     else{

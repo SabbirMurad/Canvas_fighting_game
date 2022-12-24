@@ -84,17 +84,17 @@ class Fighter{
 
 // 
 class Sprite{
-  constructor({position,canvas , imageSrc}){
+  constructor({position,size , imageSrc}){
 
     this.position = position;
-    this.height = canvas.height/3.5;
-    this.width = canvas.width/25;
+    this.height = size.height;
+    this.width = size.width;
     this.image = new Image()
     this.image.src = imageSrc
   }
 
   draw(){
-    canvasContext.drawImage(this.image,this.position.x,this.position.y)
+    canvasContext.drawImage(this.image,this.position.x,this.position.y,this.width,this.height)
   }
 
   update(){

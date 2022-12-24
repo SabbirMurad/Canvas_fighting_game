@@ -1,4 +1,96 @@
 //creating background
+const background1 = new Sprite({
+  size:{
+    height:canvas.height/1.15,
+    width:canvas.width
+  },
+  position:{
+    x:0,
+    y:0
+  },
+  imageSrc:'/game_assets/background/background_layer_1.png'
+})
+const background2 = new Sprite({
+  size:{
+    height:canvas.height/1.15,
+    width:canvas.width
+  },
+  position:{
+    x:0,
+    y:0
+  },
+  imageSrc:'/game_assets/background/background_layer_2.png'
+})
+const background3 = new Sprite({
+  size:{
+    height:canvas.height/1.15,
+    width:canvas.width
+  },
+  position:{
+    x:0,
+    y:0
+  },
+  imageSrc:'/game_assets/background/background_layer_3.png'
+})
+
+//creating the walls
+const wall1 = new Sprite({
+  size:{
+    height:canvas.height*0.15,
+    width:canvas.width/5
+  },
+  position:{
+    x:0+(canvas.width/5)*0,
+    y:canvas.height/1.18
+  },
+  imageSrc:'/game_assets/walls/wall_4.png'
+})
+const wall2 = new Sprite({
+  size:{
+    height:canvas.height*0.15,
+    width:canvas.width/5
+  },
+  position:{
+    x:0+(canvas.width/5)*1,
+    y:canvas.height/1.18
+  },
+  imageSrc:'/game_assets/walls/wall_5.png'
+})
+const wall3 = new Sprite({
+  size:{
+    height:canvas.height*0.15,
+    width:canvas.width/5
+  },
+  position:{
+    x:0+(canvas.width/5)*2,
+    y:canvas.height/1.18
+  },
+  imageSrc:'/game_assets/walls/wall_4.png'
+})
+const wall4 = new Sprite({
+  size:{
+    height:canvas.height*0.15,
+    width:canvas.width/5
+  },
+  position:{
+    x:0+(canvas.width/5)*3,
+    y:canvas.height/1.18
+  },
+  imageSrc:'/game_assets/walls/wall_4.png'
+})
+const wall5 = new Sprite({
+  size:{
+    height:canvas.height*0.15,
+    width:canvas.width/5
+  },
+  position:{
+    x:0+(canvas.width/5)*4,
+    y:canvas.height/1.18
+  },
+  imageSrc:'/game_assets/walls/wall_4.png'
+})
+//creating the decorations
+
 
 // creating the player 1
 const player1 = new Fighter({
@@ -47,6 +139,14 @@ function animate(){
   window.requestAnimationFrame(animate)
   canvasContext.fillStyle = 'black';
   canvasContext.fillRect(0,0,canvas.width,canvas.height);
+  background1.update();
+  background2.update();
+  background3.update();
+  wall1.update();
+  wall2.update();
+  wall3.update();
+  wall4.update();
+  wall5.update();
   player1.update();
   player2.update();
 
@@ -73,7 +173,7 @@ function animate(){
     player1.isAttacking = false;
     player2.helth-=10;
     player2Helth.querySelector('.yellow_foreground').style.width=player2.helth+'%';
-    player2Helth.querySelector('.red_background').style.width=player2HelthRemain+'%';
+    player2Helth.querySelector('.red_background').style.width=player2.helth+'%';
   }
 
   if(canAttack(player2,player1)){

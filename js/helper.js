@@ -12,7 +12,7 @@ let player1Helth = containerHelth.querySelector('.player1_helthbar');
 let player2Helth = containerHelth.querySelector('.player2_helthbar');
 let timer = containerHelth.querySelector('.timer');
 
-let totalTime =10;
+let totalTime =90;
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 //keys
@@ -88,5 +88,7 @@ reloadBtn.addEventListener('click',()=>{
   countdown();
 
   player1.position.x=200;
+  player1.position.y=0;
   player2.position.x=canvas.width-200-canvas.width/25;
+  player2.position.y=0;
 })

@@ -221,7 +221,7 @@ const player1 = new Fighter({
     x:0,
     y:0
   },
-  scale:5.1,
+  ratio:.28,
   sprites:{
     direction : 'forward',
     idle:{

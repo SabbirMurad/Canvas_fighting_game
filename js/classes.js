@@ -6,10 +6,11 @@ class Fighter{
     color,
     offset,
     sprites,
-    scale
+    ratio
   }){
     //positions , size ,offsets etc
     this.color = color;
+    this.ratio = ratio;
     this.position = position;
     this.velocity = velocity;
     this.height = canvas.height/3.7;
@@ -45,7 +46,7 @@ class Fighter{
     this.frameHold=0;
     this.frameRate=this.currentSprite.frameRate;
 
-    this.scale =(canvas.width/this.image.width)*.9;
+    this.scale =(canvas.height/this.image.height)*this.ratio;
   }
 
   // draw(){

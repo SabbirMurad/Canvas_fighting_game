@@ -6,7 +6,8 @@ class Fighter{
     color,
     offset,
     sprites,
-    ratio
+    ratio,
+    direction
   }){
     //positions , size ,offsets etc
     this.canJump =true;
@@ -39,7 +40,7 @@ class Fighter{
     //sprites
     this.sprites=sprites
     this.currentSprite = sprites.idle
-    this.direction = this.sprites.direction
+    this.direction = direction
     //images
     this.image = new Image();
     this.image.src = this.currentSprite[this.direction];
@@ -51,45 +52,22 @@ class Fighter{
     this.scale =(canvas.height/this.image.height)*this.ratio;
   }
 
-  // draw(){
-  //   //playerBox
-  //   canvasContext.fillStyle = this.color;
-  //   canvasContext.fillRect(
-  //     this.position.x,
-  //     this.position.y,
-  //     this.width,
-  //     this.height
-  //   )
-
-  //   //attackBox
-    
-  //   if(this.isAttacking){
-  //     canvasContext.fillStyle = "green";
-  //     canvasContext.fillRect(
-  //       this.attackBox.position.x,
-  //       this.attackBox.position.y,
-  //       this.attackBox.width,
-  //       this.attackBox.height,
-  //     )
-  //   }
-  // }
-
   draw(){
-    canvasContext.fillStyle = this.color;
-    canvasContext.fillRect(
-      this.position.x,
-      this.position.y,
-      this.width,
-      this.height
-    )
+    // canvasContext.fillStyle = this.color;
+    // canvasContext.fillRect(
+    //   this.position.x,
+    //   this.position.y,
+    //   this.width,
+    //   this.height
+    // )
 
-    canvasContext.fillStyle = "green";
-      canvasContext.fillRect(
-        this.attackBox.position.x,
-        this.attackBox.position.y,
-        this.attackBox.width,
-        this.attackBox.height,
-      )
+    // canvasContext.fillStyle = "green";
+    //   canvasContext.fillRect(
+    //     this.attackBox.position.x,
+    //     this.attackBox.position.y,
+    //     this.attackBox.width,
+    //     this.attackBox.height,
+    //   )
     
     canvasContext.drawImage(
       this.image,
@@ -108,7 +86,12 @@ class Fighter{
 
   update(){
     this.draw();
-    this.currentSprite = this.sprites.idle;
+    if(keys.a.pressed|| keys.d.pressed){
+      this.currentSprite = this.sprites.run;
+    }
+    else{
+      this.currentSprite = this.sprites.idle;
+    }
     this.image.src = this.currentSprite[this.direction];
     this.frameHold++;
     if(this.frameHold>this.frameRate){
@@ -127,6 +110,7 @@ class Fighter{
       this.direction='forward';
     }
 
+    
     if(this.lastkey === 'ArrowRight'){
       this.attackBox.offset.x=0;
     }

@@ -208,6 +208,7 @@ const shop = new AnimateSprite({
 })
 // creating the player 1
 const player1 = new Fighter({
+  direction : 'forward',
   position:{
     x:canvas.width/10,
     y:0
@@ -223,7 +224,6 @@ const player1 = new Fighter({
   },
   ratio:.28,
   sprites:{
-    direction : 'forward',
     idle:{
       framesTotal:8,
       frameRate:10,
@@ -232,14 +232,16 @@ const player1 = new Fighter({
     },
     run:{
       framesTotal:8,
-      frameRate:1000,
-      imageSrc:'game_assets/Martial_Hero/Sprites/Run.png',
+      frameRate:10,
+      forward:'game_assets/Martial_Hero/Sprites/Run.png',
+      backward:'game_assets/Martial_Hero/Sprites/Run_backward.png'
     }
   },
 })
 
 //creating the player 2
 const player2 = new Fighter({
+  direction : 'forward',
   position:{
     x:canvas.width-200-canvas.width/10,
     y:0
@@ -253,20 +255,19 @@ const player2 = new Fighter({
     x:canvas.width/10 -canvas.width/25,
     y:0
   },
-  size:{
-    width : canvas.width/10,
-    height : canvas.height/3.7
-  },
+  ratio:.28,
   sprites:{
     idle:{
       framesTotal:8,
       frameRate:10,
-      imageSrc:'game_assets/Martial_Hero/Sprites/Idle.png',
+      forward:'game_assets/Martial_Hero/Sprites/Idle.png',
+      backward:'game_assets/Martial_Hero/Sprites/Idle_backward.png'
     },
     run:{
       framesTotal:8,
       frameRate:10,
-      imageSrc:'game_assets/Martial_Hero/Sprites/Run.png',
+      forward:'game_assets/Martial_Hero/Sprites/Run.png',
+      backward:'game_assets/Martial_Hero/Sprites/Run_backward.png'
     }
   },
 })

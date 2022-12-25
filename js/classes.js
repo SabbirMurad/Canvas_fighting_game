@@ -1,6 +1,15 @@
 //fighter class ---------------------------
 class Fighter{
-  constructor({position,velocity,color,offset,size, imageSrc , frames}){
+  constructor({
+    position,
+    velocity,
+    color,
+    offset,
+    size, 
+    imageSrc,
+    frames
+  }){
+    //positions , size ,offsets etc
     this.color = color;
     this.position = position;
     this.velocity = velocity;
@@ -8,6 +17,7 @@ class Fighter{
     this.width = size.width;
     this.lastkey;
     this.offset = offset
+    //attackbox
     this.attackBox = {
       position :{
         x:this.position.x,
@@ -20,11 +30,14 @@ class Fighter{
         y:offset.y
       },
     }
+    //health , attack
     this.isAttacking
     this.helth=100
 
+    //images
     this.image = new Image();
-    this.image.src = imageSrc;
+    this.imageSrc= imageSrc;
+    this.image.src = this.imageSrc.imageIdle;
     this.framesTotal=frames.framesTotal;
     this.currentFrame=0;
     this.frameHold=0;
@@ -82,9 +95,18 @@ class Fighter{
 
     if(this.lastkey === 'a'){
       this.attackBox.offset.x = this.attackBox.width - this.width;
+      this.image.src=this.imageSrc.imageIdleBackward
     }
+    else if(this.lastkey ==='d'){
+      this.image.src=this.imageSrc.imageIdle
+    }
+
     if(this.lastkey === 'ArrowRight'){
       this.attackBox.offset.x=0;
+      this.image.src=this.imageSrc.imageIdleBackward
+    }
+    else if(this.lastkey === 'ArrowLeft'){
+      this.image.src=this.imageSrc.imageIdle
     }
     this.attackBox.position.x = this.position.x -this.attackBox.offset.x;
     this.attackBox.position.y = this.position.y;

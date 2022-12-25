@@ -223,19 +223,22 @@ const player1 = new Fighter({
   },
   size:{
     width : canvas.width/10,
-    height : canvas.height/3.5
+    height : canvas.height/3.7
   },
   frames:{
     framesTotal:8,
     frameRate:10
   },
-  imageSrc:'game_assets/Martial_Hero/Sprites/Idle.png'
+  imageSrc:{
+    imageIdle:'game_assets/Martial_Hero/Sprites/Idle.png',
+    imageIdleBackward:'game_assets/Martial_Hero/Sprites/Idle_backward.png',
+  }
 })
 
 //creating the player 2
 const player2 = new Fighter({
   position:{
-    x:canvas.width-200-canvas.width/25,
+    x:canvas.width-200-canvas.width/10,
     y:0
   },
   velocity:{
@@ -249,11 +252,14 @@ const player2 = new Fighter({
   },
   size:{
     width : canvas.width/10,
-    height : canvas.height/3.5
+    height : canvas.height/3.7
   },
   frames:{
     framesTotal:8,
     frameRate:10
   },
-  imageSrc:'game_assets/Martial_Hero/Sprites/Idle.png'
+  imageSrc:{
+    imageIdle:'game_assets/Martial_Hero/Sprites/Idle_backward.png',
+    imageIdleBackward:'game_assets/Martial_Hero/Sprites/Idle.png',
+  }
 })

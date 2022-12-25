@@ -209,7 +209,7 @@ const shop = new AnimateSprite({
 // creating the player 1
 const player1 = new Fighter({
   position:{
-    x:200,
+    x:canvas.width/10,
     y:0
   },
   velocity:{
@@ -221,10 +221,7 @@ const player1 = new Fighter({
     x:0,
     y:0
   },
-  size:{
-    width : canvas.width/10,
-    height : canvas.height/3.7
-  },
+  scale:5.1,
   sprites:{
     direction : 'forward',
     idle:{

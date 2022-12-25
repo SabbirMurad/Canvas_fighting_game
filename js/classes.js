@@ -5,17 +5,17 @@ class Fighter{
     velocity,
     color,
     offset,
-    size, 
-    sprites
+    sprites,
+    scale
   }){
     //positions , size ,offsets etc
     this.color = color;
     this.position = position;
     this.velocity = velocity;
-    this.height = size.height;
-    this.width = size.width;
+    this.height = canvas.height/3.7;
+    this.width = canvas.width/25;
     this.lastkey;
-    this.offset = offset
+    this.offset = offset;
     //attackbox
     this.attackBox = {
       position :{
@@ -44,6 +44,8 @@ class Fighter{
     this.currentFrame=0;
     this.frameHold=0;
     this.frameRate=this.currentSprite.frameRate;
+
+    this.scale =(canvas.width/this.image.width)*.9;
   }
 
   // draw(){
@@ -58,28 +60,46 @@ class Fighter{
 
   //   //attackBox
     
-  //   // if(this.isAttacking){
-  //   //   canvasContext.fillStyle = "green";
-  //   //   canvasContext.fillRect(
-  //   //     this.attackBox.position.x,
-  //   //     this.attackBox.position.y,
-  //   //     this.attackBox.width,
-  //   //     this.attackBox.height,
-  //   //   )
-  //   // }
+  //   if(this.isAttacking){
+  //     canvasContext.fillStyle = "green";
+  //     canvasContext.fillRect(
+  //       this.attackBox.position.x,
+  //       this.attackBox.position.y,
+  //       this.attackBox.width,
+  //       this.attackBox.height,
+  //     )
+  //   }
   // }
 
   draw(){
-    canvasContext.drawImage(
-      this.image,
-      this.currentFrame*(this.image.width/this.framesTotal),
-      0,
-      this.image.width/this.framesTotal,
-      this.image.height,
+    canvasContext.fillStyle = this.color;
+    canvasContext.fillRect(
       this.position.x,
       this.position.y,
       this.width,
       this.height
+    )
+
+    canvasContext.fillStyle = "green";
+      canvasContext.fillRect(
+        this.attackBox.position.x,
+        this.attackBox.position.y,
+        this.attackBox.width,
+        this.attackBox.height,
+      )
+    
+    canvasContext.drawImage(
+      this.image,
+
+      this.currentFrame*(this.image.width/this.framesTotal),
+      0,
+      this.image.width/this.framesTotal,
+      this.image.height,
+      
+      this.position.x - ((this.image.width/this.framesTotal)*this.scale)/2,
+      this.position.y,
+      (this.image.width/this.framesTotal)*this.scale,
+      (this.image.height)*this.scale
     )
   }
 
@@ -154,7 +174,13 @@ class Sprite{
   }
 
   draw(){
-    canvasContext.drawImage(this.image,this.position.x,this.position.y,this.width,this.height)
+    canvasContext.drawImage(
+      this.image,
+      this.position.x,
+      this.position.y,
+      this.width,
+      this.height
+    )
   }
 
   update(){

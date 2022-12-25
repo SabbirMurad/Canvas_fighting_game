@@ -14,7 +14,7 @@ let timer = containerHelth.querySelector('.timer');
 
 let totalTime =90;
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.height = canvas.width/2;
 //keys
 const keys ={
   a:{

@@ -21,10 +21,10 @@ class Fighter{
     this.attackBox = {
       position :{
         x:this.position.x,
-        y:this.position.y
+        y:this.position.y+(this.height/4)
       },
-      width:canvas.width/10,
-      height :canvas.height/15,
+      width:this.width*3,
+      height :this.height/4,
       offset:{
         x:offset.x,
         y:offset.y
@@ -131,7 +131,7 @@ class Fighter{
     else if(this.lastkey === 'ArrowLeft'){
     }
     this.attackBox.position.x = this.position.x -this.attackBox.offset.x;
-    this.attackBox.position.y = this.position.y;
+    this.attackBox.position.y = this.position.y+(this.height/4);
 
     this.attackBox.offset.x = this.offset.x;
     this.attackBox.offset.y = this.offset.y;

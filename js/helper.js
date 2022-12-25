@@ -2,7 +2,6 @@
 const canvas = document.querySelector('canvas');
 const canvasContext = canvas.getContext('2d');
 canvasContext.fillRect(0,0,canvas.width,canvas.height);
-const gravity = 0.7;
 const containerInfo = document.querySelector('.container_info');
 const gameOverText = containerInfo.querySelector('.game_over_text');
 const reloadBtn = containerInfo.querySelector('.reload_button');
@@ -15,6 +14,7 @@ let timer = containerHelth.querySelector('.timer');
 let totalTime =90;
 canvas.width = window.innerWidth;
 canvas.height = canvas.width/2;
+const gravity = canvas.height/1200;
 //keys
 const keys ={
   a:{

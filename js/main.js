@@ -36,19 +36,19 @@ function animate(){
   //player 1 movement
   player1.velocity.x = 0 ;
   if(keys.a.pressed && player1.lastkey ==='a'){
-    player1.velocity.x = -5;
+    player1.velocity.x = -canvas.width/200;
   }
   else if(keys.d.pressed && player1.lastkey ==='d'){
-    player1.velocity.x = 5;
+    player1.velocity.x = canvas.width/200;
   }
 
   //player 2 movement
   player2.velocity.x = 0 ;
   if(keys.ArrowLeft.pressed && player2.lastkey ==='ArrowLeft'){
-    player2.velocity.x = -5;
+    player2.velocity.x = -canvas.width/200;
   }
   else if(keys.ArrowRight.pressed && player2.lastkey ==='ArrowRight'){
-    player2.velocity.x = 5;
+    player2.velocity.x = canvas.width/200;
   }
 
   //detect for collision
@@ -86,7 +86,7 @@ window.addEventListener('keydown',(e)=>{
     player1.lastkey = 'a';
     break;
     case 'w' :
-    player1.velocity.y = -20;
+    player1.velocity.y = -canvas.height/50;
     break;
     case ' ' :
     player1.attack();
@@ -101,7 +101,7 @@ window.addEventListener('keydown',(e)=>{
     player2.lastkey = 'ArrowLeft';
     break;
     case 'ArrowUp' :
-    player2.velocity.y = -20;
+    player2.velocity.y = -canvas.height/50;
     break;
     case '0':
     player2.attack();

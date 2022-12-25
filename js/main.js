@@ -31,7 +31,7 @@ function animate(){
   grass2.update();
 
   player1.update();
-  player2.update();
+  // player2.update();
 
   //player 1 movement
   player1.velocity.x = 0 ;

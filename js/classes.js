@@ -6,8 +6,7 @@ class Fighter{
     color,
     offset,
     size, 
-    imageSrc,
-    frames
+    sprites
   }){
     //positions , size ,offsets etc
     this.color = color;
@@ -34,14 +33,17 @@ class Fighter{
     this.isAttacking
     this.helth=100
 
+    //sprites
+    this.sprites=sprites
+    this.currentSprite = sprites.idle
+    this.direction = this.sprites.direction
     //images
     this.image = new Image();
-    this.imageSrc= imageSrc;
-    this.image.src = this.imageSrc.imageIdle;
-    this.framesTotal=frames.framesTotal;
+    this.image.src = this.currentSprite[this.direction];
+    this.framesTotal=this.currentSprite.framesTotal;
     this.currentFrame=0;
     this.frameHold=0;
-    this.frameRate=frames.frameRate;
+    this.frameRate=this.currentSprite.frameRate;
   }
 
   // draw(){
@@ -83,7 +85,8 @@ class Fighter{
 
   update(){
     this.draw();
-
+    this.currentSprite = this.sprites.idle;
+    this.image.src = this.currentSprite[this.direction];
     this.frameHold++;
     if(this.frameHold>this.frameRate){
       this.currentFrame++
@@ -95,18 +98,16 @@ class Fighter{
 
     if(this.lastkey === 'a'){
       this.attackBox.offset.x = this.attackBox.width - this.width;
-      this.image.src=this.imageSrc.imageIdleBackward
+      this.direction = 'backward'
     }
     else if(this.lastkey ==='d'){
-      this.image.src=this.imageSrc.imageIdle
+      this.direction='forward';
     }
 
     if(this.lastkey === 'ArrowRight'){
       this.attackBox.offset.x=0;
-      this.image.src=this.imageSrc.imageIdleBackward
     }
     else if(this.lastkey === 'ArrowLeft'){
-      this.image.src=this.imageSrc.imageIdle
     }
     this.attackBox.position.x = this.position.x -this.attackBox.offset.x;
     this.attackBox.position.y = this.position.y;

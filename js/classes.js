@@ -9,6 +9,8 @@ class Fighter{
     ratio
   }){
     //positions , size ,offsets etc
+    this.canJump =true;
+    this.jumpCount=0;
     this.color = color;
     this.ratio = ratio;
     this.position = position;
@@ -147,6 +149,8 @@ class Fighter{
 
     if(this.position.y + this.height + this.velocity.y>=canvas.height/1.17){
       this.velocity.y=0;
+      this.canJump = true;
+      this.jumpCount = 0;
     }
     else{
       this.velocity.y+=gravity

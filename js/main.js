@@ -86,7 +86,14 @@ window.addEventListener('keydown',(e)=>{
     player1.lastkey = 'a';
     break;
     case 'w' :
-    player1.velocity.y = -canvas.height/50;
+      if(player1.jumpCount==2){
+        player1.canJump=false;
+      }
+      if(player1.canJump){
+        console.log("w")
+        player1.jumpCount++;
+        player1.velocity.y = -canvas.height/50;
+      }
     break;
     case ' ' :
     player1.attack();

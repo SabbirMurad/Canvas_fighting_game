@@ -241,7 +241,7 @@ const player1 = new Fighter({
 
 //creating the player 2
 const player2 = new Fighter({
-  direction : 'forward',
+  direction : 'backward',
   position:{
     x:canvas.width-200-canvas.width/10,
     y:0
@@ -252,7 +252,7 @@ const player2 = new Fighter({
   },
   color:'blue',
   offset:{
-    x:canvas.width/10 -canvas.width/25,
+    x:0,
     y:0
   },
   ratio:.28,

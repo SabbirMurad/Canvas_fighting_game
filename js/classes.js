@@ -86,12 +86,7 @@ class Fighter{
 
   update(){
     this.draw();
-    if(keys.a.pressed|| keys.d.pressed){
-      this.currentSprite = this.sprites.run;
-    }
-    else{
-      this.currentSprite = this.sprites.idle;
-    }
+    
     this.image.src = this.currentSprite[this.direction];
     this.frameHold++;
     if(this.frameHold>this.frameRate){
@@ -113,8 +108,11 @@ class Fighter{
     
     if(this.lastkey === 'ArrowRight'){
       this.attackBox.offset.x=0;
+      this.direction='forward';
     }
     else if(this.lastkey === 'ArrowLeft'){
+      this.attackBox.offset.x = this.attackBox.width - this.width;
+      this.direction = 'backward'
     }
     this.attackBox.position.x = this.position.x -this.attackBox.offset.x;
     this.attackBox.position.y = this.position.y+(this.height/4);

@@ -31,7 +31,24 @@ function animate(){
   grass2.update();
 
   player1.update();
-  // player2.update();
+  player2.update();
+
+  //individual sprite change
+  if((keys.a.pressed|| keys.d.pressed) && 
+    (player1.lastkey === 'a' ||player1.lastkey === 'd')){
+      player1.currentSprite = player1.sprites.run;
+    }
+    else{
+      player1.currentSprite = player1.sprites.idle;
+    }
+
+  if((keys.ArrowLeft.pressed|| keys.ArrowRight.pressed) && 
+    (player2.lastkey === 'ArrowLeft' ||player2.lastkey === 'ArrowRight')){
+      player2.currentSprite = player2.sprites.run;
+    }
+    else{
+      player2.currentSprite = player2.sprites.idle;
+    }
 
   //player 1 movement
   player1.velocity.x = 0 ;

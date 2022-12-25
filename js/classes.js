@@ -1,11 +1,11 @@
 //fighter class ---------------------------
 class Fighter{
-  constructor({position,velocity,color,offset,canvas}){
+  constructor({position,velocity,color,offset,size, imageSrc , frames}){
     this.color = color;
     this.position = position;
     this.velocity = velocity;
-    this.height = canvas.height/3.5;
-    this.width = canvas.width/25;
+    this.height = size.height;
+    this.width = size.width;
     this.lastkey;
     this.offset = offset
     this.attackBox = {
@@ -22,33 +22,63 @@ class Fighter{
     }
     this.isAttacking
     this.helth=100
+
+    this.image = new Image();
+    this.image.src = imageSrc;
+    this.framesTotal=frames.framesTotal;
+    this.currentFrame=0;
+    this.frameHold=0;
+    this.frameRate=frames.frameRate;
   }
 
+  // draw(){
+  //   //playerBox
+  //   canvasContext.fillStyle = this.color;
+  //   canvasContext.fillRect(
+  //     this.position.x,
+  //     this.position.y,
+  //     this.width,
+  //     this.height
+  //   )
+
+  //   //attackBox
+    
+  //   // if(this.isAttacking){
+  //   //   canvasContext.fillStyle = "green";
+  //   //   canvasContext.fillRect(
+  //   //     this.attackBox.position.x,
+  //   //     this.attackBox.position.y,
+  //   //     this.attackBox.width,
+  //   //     this.attackBox.height,
+  //   //   )
+  //   // }
+  // }
+
   draw(){
-    //playerBox
-    canvasContext.fillStyle = this.color;
-    canvasContext.fillRect(
+    canvasContext.drawImage(
+      this.image,
+      this.currentFrame*(this.image.width/this.framesTotal),
+      0,
+      this.image.width/this.framesTotal,
+      this.image.height,
       this.position.x,
       this.position.y,
       this.width,
       this.height
     )
-
-    //attackBox
-    
-    if(this.isAttacking){
-      canvasContext.fillStyle = "green";
-      canvasContext.fillRect(
-        this.attackBox.position.x,
-        this.attackBox.position.y,
-        this.attackBox.width,
-        this.attackBox.height,
-      )
-    }
   }
 
   update(){
     this.draw();
+
+    this.frameHold++;
+    if(this.frameHold>this.frameRate){
+      this.currentFrame++
+      this.frameHold=0;
+    }
+    if(this.currentFrame===this.framesTotal){
+      this.currentFrame=0;
+    }
 
     if(this.lastkey === 'a'){
       this.attackBox.offset.x = this.attackBox.width - this.width;
@@ -78,6 +108,8 @@ class Fighter{
       this.velocity.y+=gravity
     }
   }
+
+  
 
   attack(){
     this.isAttacking = true;

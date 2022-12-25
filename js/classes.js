@@ -91,7 +91,6 @@ class Fighter{
 // 
 class Sprite{
   constructor({position,size , imageSrc}){
-
     this.position = position;
     this.height = size.height;
     this.width = size.width;
@@ -108,18 +107,24 @@ class Sprite{
   }
 }
 class AnimateSprite{
-  constructor({position,size, imageSrc}){
+  constructor({position,size, imageSrc , frames}){
     this.position = position;
     this.height = size.height;
     this.width = size.width;
-    this.image = new Image()
-    this.image.src = imageSrc
+    this.image = new Image();
+    this.image.src = imageSrc;
+    this.framesTotal=frames.framesTotal;
+    this.currentFrame=0;
+    this.frameHold=0;
+    this.frameRate=frames.frameRate;
   }
-
   draw(){
     canvasContext.drawImage(
       this.image,
-      
+      this.currentFrame*(this.image.width/this.framesTotal),
+      0,
+      this.image.width/this.framesTotal,
+      this.image.height,
       this.position.x,
       this.position.y,
       this.width,
@@ -129,5 +134,13 @@ class AnimateSprite{
 
   update(){
     this.draw();
+    this.frameHold++;
+    if(this.frameHold>this.frameRate){
+      this.currentFrame++
+      this.frameHold=0;
+    }
+    if(this.currentFrame===this.framesTotal){
+      this.currentFrame=0;
+    }
   }
 }

@@ -227,14 +227,14 @@ const player1 = new Fighter({
     idle:{
       framesTotal:8,
       frameRate:10,
-      forward:'game_assets/Martial_Hero/Sprites/Idle.png',
-      backward:'game_assets/Martial_Hero/Sprites/Idle_backward.png'
+      forwardSrc:'game_assets/Martial_Hero/Sprites/Idle.png',
+      backwardSrc:'game_assets/Martial_Hero/Sprites/Idle_backward.png'
     },
     run:{
       framesTotal:8,
       frameRate:10,
-      forward:'game_assets/Martial_Hero/Sprites/Run.png',
-      backward:'game_assets/Martial_Hero/Sprites/Run_backward.png'
+      forwardSrc:'game_assets/Martial_Hero/Sprites/Run.png',
+      backwardSrc:'game_assets/Martial_Hero/Sprites/Run_backward.png'
     }
   },
 })
@@ -260,14 +260,14 @@ const player2 = new Fighter({
     idle:{
       framesTotal:8,
       frameRate:10,
-      forward:'game_assets/Martial_Hero/Sprites/Idle.png',
-      backward:'game_assets/Martial_Hero/Sprites/Idle_backward.png'
+      forwardSrc:'game_assets/Martial_Hero/Sprites/Idle.png',
+      backwardSrc:'game_assets/Martial_Hero/Sprites/Idle_backward.png'
     },
     run:{
       framesTotal:8,
       frameRate:10,
-      forward:'game_assets/Martial_Hero/Sprites/Run.png',
-      backward:'game_assets/Martial_Hero/Sprites/Run_backward.png'
+      forwardSrc:'game_assets/Martial_Hero/Sprites/Run.png',
+      backwardSrc:'game_assets/Martial_Hero/Sprites/Run_backward.png'
     }
   },
 })

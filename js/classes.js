@@ -39,11 +39,20 @@ class Fighter{
 
     //sprites
     this.sprites=sprites
+    let keys = Object.keys(this.sprites);
+    for(let key of keys){
+      this.sprites[key].images ={}
+      let backwardImg = new Image();
+      backwardImg.src = this.sprites[key].backwardSrc
+      let forwardImg = new Image();
+      forwardImg.src = this.sprites[key].forwardSrc
+      this.sprites[key].images.backward =backwardImg
+      this.sprites[key].images.forward =forwardImg
+    }
     this.currentSprite = sprites.idle
     this.direction = direction
     //images
-    this.image = new Image();
-    this.image.src = this.currentSprite[this.direction];
+    this.image = this.currentSprite.images[this.direction];
     this.framesTotal=this.currentSprite.framesTotal;
     this.currentFrame=0;
     this.frameHold=0;
@@ -87,7 +96,7 @@ class Fighter{
   update(){
     this.draw();
     
-    this.image.src = this.currentSprite[this.direction];
+    this.image = this.currentSprite.images[this.direction];
     this.frameHold++;
     if(this.frameHold>this.frameRate){
       this.currentFrame++

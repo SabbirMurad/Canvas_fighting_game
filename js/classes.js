@@ -6,18 +6,15 @@ class Fighter{
     color,
     offset,
     sprites,
-    ratio,
+    scale,
     direction
   }){
     //positions , size ,offsets etc
-    this.canJump =true;
-    this.jumpCount=0;
     this.color = color;
-    this.ratio = ratio;
     this.position = position;
     this.velocity = velocity;
-    this.height = canvas.height/3.7;
-    this.width = canvas.width/25;
+    this.height = canvas.height/4.5;
+    this.width = canvas.width/30;
     this.lastkey;
     this.offset = offset;
     //attackbox
@@ -36,7 +33,8 @@ class Fighter{
     //health , attack
     this.isAttacking
     this.helth=100
-
+    this.canJump =true;
+    this.jumpCount=0;
     //sprites
     this.sprites=sprites
     let keys = Object.keys(this.sprites);
@@ -57,8 +55,8 @@ class Fighter{
     this.currentFrame=0;
     this.frameHold=0;
     this.frameRate=this.currentSprite.frameRate;
-
-    this.scale =(canvas.height/this.image.height)*this.ratio;
+    this.scale = this.currentSprite.scale;
+    this.ratio =(canvas.height/this.image.height)*this.scale;
   }
 
   draw(){
@@ -86,17 +84,19 @@ class Fighter{
       this.image.width/this.framesTotal,
       this.image.height,
       
-      this.position.x - ((this.image.width/this.framesTotal)*this.scale)/2,
+      this.position.x - ((this.image.width/this.framesTotal)*this.ratio)/2,
       this.position.y,
-      (this.image.width/this.framesTotal)*this.scale,
-      (this.image.height)*this.scale
+      (this.image.width/this.framesTotal)*this.ratio,
+      (this.image.height)*this.ratio
     )
   }
 
   update(){
     this.draw();
-    
+    this.framesTotal=this.currentSprite.framesTotal;
+    this.frameRate=this.currentSprite.frameRate;
     this.image = this.currentSprite.images[this.direction];
+    this.ratio =(canvas.height/this.image.height)*this.currentSprite.scale;
     this.frameHold++;
     if(this.frameHold>this.frameRate){
       this.currentFrame++
@@ -138,7 +138,7 @@ class Fighter{
       this.position.x+=this.velocity.x;
     }
 
-    if(this.position.y + this.height + this.velocity.y>=canvas.height/1.17){
+    if(this.position.y + this.height + this.velocity.y>=canvas.height/1.11){
       this.velocity.y=0;
       this.canJump = true;
       this.jumpCount = 0;
@@ -161,12 +161,12 @@ class Fighter{
 
 // 
 class Sprite{
-  constructor({position,size , imageSrc}){
+  constructor({position,size , imageSrc ,scale}){
     this.position = position;
-    this.height = size.height;
-    this.width = size.width;
-    this.image = new Image()
-    this.image.src = imageSrc
+    this.image = new Image();
+    this.image.src = imageSrc;
+    this.scale = scale;
+    this.ratio =(canvas.height/this.image.height)*this.scale;
   }
 
   draw(){
@@ -174,8 +174,8 @@ class Sprite{
       this.image,
       this.position.x,
       this.position.y,
-      this.width,
-      this.height
+      this.image.width*this.ratio,
+      this.image.height*this.ratio
     )
   }
 
@@ -184,28 +184,30 @@ class Sprite{
   }
 }
 class AnimateSprite{
-  constructor({position,size, imageSrc , frames}){
+  constructor({position, imageSrc , frames,scale}){
     this.position = position;
-    this.height = size.height;
-    this.width = size.width;
     this.image = new Image();
     this.image.src = imageSrc;
     this.framesTotal=frames.framesTotal;
     this.currentFrame=0;
     this.frameHold=0;
     this.frameRate=frames.frameRate;
+    this.scale = scale;
+    this.ratio =(canvas.height/this.image.height)*this.scale;
   }
   draw(){
     canvasContext.drawImage(
       this.image,
+
       this.currentFrame*(this.image.width/this.framesTotal),
       0,
       this.image.width/this.framesTotal,
       this.image.height,
+
       this.position.x,
       this.position.y,
-      this.width,
-      this.height
+      (this.image.width/this.framesTotal)*this.ratio,
+      this.image.height*this.ratio
     )
   }
 

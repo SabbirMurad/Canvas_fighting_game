@@ -15,11 +15,7 @@ function animate(){
 
   shop.update();
 
-  wall1.update();
-  wall2.update();
-  wall3.update();
-  wall4.update();
-  wall5.update();
+  
 
   sign1.update();
 
@@ -27,6 +23,16 @@ function animate(){
   rock2.update();
   rock3.update();
   
+  
+
+  wall1.update();
+  wall2.update();
+  wall3.update();
+  wall4.update();
+  wall5.update();
+  wall6.update();
+  wall7.update();
+
   grass1.update();
   grass2.update();
 

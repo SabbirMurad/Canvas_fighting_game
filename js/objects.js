@@ -1,201 +1,162 @@
 //creating background
 const background1 = new Sprite({
-  size:{
-    height:canvas.height/1.15,
-    width:canvas.width
-  },
   position:{
     x:0,
     y:0
   },
+  scale:1.13,
   imageSrc:'/game_assets/background/background_layer_1.png'
 })
 const background2 = new Sprite({
-  size:{
-    height:canvas.height/1.15,
-    width:canvas.width
-  },
   position:{
     x:0,
     y:0
   },
+  scale:1.13,
   imageSrc:'/game_assets/background/background_layer_2.png'
 })
 const background3 = new Sprite({
-  size:{
-    height:canvas.height/1.15,
-    width:canvas.width
-  },
   position:{
     x:0,
     y:0
   },
+  scale:1.13,
   imageSrc:'/game_assets/background/background_layer_3.png'
 })
 
 //creating the walls
 const wall1 = new Sprite({
-  size:{
-    height:canvas.height*0.15,
-    width:canvas.width/5
-  },
   position:{
-    x:0+(canvas.width/5)*0,
-    y:canvas.height/1.18
+    x:0+(canvas.width/7)*0,
+    y:canvas.height/1.11
   },
+  scale:.1,
   imageSrc:'/game_assets/walls/wall_4.png'
 })
 const wall2 = new Sprite({
-  size:{
-    height:canvas.height*0.15,
-    width:canvas.width/5
-  },
   position:{
-    x:0+(canvas.width/5)*1,
-    y:canvas.height/1.18
+    x:0+(canvas.width/7)*1,
+    y:canvas.height/1.11
   },
+  scale:.1,
   imageSrc:'/game_assets/walls/wall_5.png'
 })
 const wall3 = new Sprite({
-  size:{
-    height:canvas.height*0.15,
-    width:canvas.width/5
-  },
   position:{
-    x:0+(canvas.width/5)*2,
-    y:canvas.height/1.18
+    x:0+(canvas.width/7)*2,
+    y:canvas.height/1.11
   },
+  scale:.1,
   imageSrc:'/game_assets/walls/wall_4.png'
 })
 const wall4 = new Sprite({
-  size:{
-    height:canvas.height*0.15,
-    width:canvas.width/5
-  },
   position:{
-    x:0+(canvas.width/5)*3,
-    y:canvas.height/1.18
+    x:0+(canvas.width/7)*3,
+    y:canvas.height/1.11
   },
+  scale:.1,
   imageSrc:'/game_assets/walls/wall_4.png'
 })
 const wall5 = new Sprite({
-  size:{
-    height:canvas.height*0.15,
-    width:canvas.width/5
-  },
   position:{
-    x:0+(canvas.width/5)*4,
-    y:canvas.height/1.18
+    x:0+(canvas.width/7)*4,
+    y:canvas.height/1.11
   },
+  scale:.1,
   imageSrc:'/game_assets/walls/wall_4.png'
 })
-//creating the decorations
-const rock1 = new Sprite({
-  size:{
-    height:canvas.height/15,
-    width:canvas.width/15
-  },
+const wall6 = new Sprite({
   position:{
-    x:(canvas.width/10)*1.5,
-    y:canvas.height/1.275
+    x:0+(canvas.width/7)*5,
+    y:canvas.height/1.11
   },
+  scale:.1,
+  imageSrc:'/game_assets/walls/wall_4.png'
+})
+const wall7 = new Sprite({
+  position:{
+    x:0+(canvas.width/7)*6,
+    y:canvas.height/1.11
+  },
+  scale:.1,
+  imageSrc:'/game_assets/walls/wall_4.png'
+})
+// //creating the decorations
+const rock1 = new Sprite({
+  position:{
+    x:(canvas.width/10)*2.5,
+    y:canvas.height/1.17
+  },
+  scale:.05,
   imageSrc:'/game_assets/decorations/rock_3.png'
 })
 const rock2 = new Sprite({
-  size:{
-    height:canvas.height/8,
-    width:canvas.width/8
-  },
   position:{
     x:(canvas.width/1.08),
-    y:canvas.height/1.38
+    y:canvas.height/1.235
   },
+  scale:.09,
   imageSrc:'/game_assets/decorations/rock_3.png'
 })
 const rock3 = new Sprite({
-  size:{
-    height:canvas.height/25,
-    width:canvas.width/25
-  },
   position:{
     x:(canvas.width/2),
-    y:canvas.height/1.23
+    y:canvas.height/1.15
   },
+  scale:.03,
   imageSrc:'/game_assets/decorations/rock_2.png'
 })
 const fence1 = new Sprite({
-  size:{
-    height:canvas.height/8,
-    width:canvas.width/5
-  },
   position:{
-    x:(canvas.width/7),
-    y:canvas.height/1.38
+    x:(canvas.width/6),
+    y:canvas.height/1.24
   },
+  scale:.09,
   imageSrc:'/game_assets/decorations/fence_1.png'
 })
 const fence2 = new Sprite({
-  size:{
-    height:canvas.height/8,
-    width:canvas.width/5
-  },
   position:{
-    x:0-(canvas.width/7),
-    y:canvas.height/1.38
+    x:0-(canvas.width/9),
+    y:canvas.height/1.24
   },
+  scale:.09,
   imageSrc:'/game_assets/decorations/fence_2.png'
 })
 const fence3 = new Sprite({
-  size:{
-    height:canvas.height/8,
-    width:canvas.width/5
-  },
   position:{
-    x:(canvas.width/3.1),
-    y:canvas.height/1.38
+    x:(canvas.width/3.05),
+    y:canvas.height/1.24
   },
+  scale:.09,
   imageSrc:'/game_assets/decorations/fence_2.png'
 })
 
 const grass1 = new Sprite({
-  size:{
-    height:canvas.height/40,
-    width:canvas.width/35
-  },
   position:{
-    x:(canvas.width/5.05),
-    y:canvas.height/1.211
+    x:(canvas.width/5.5),
+    y:canvas.height/1.13
   },
+  scale:.02,
+  imageSrc:'/game_assets/decorations/grass_3.png'
+})
+const grass2 = new Sprite({
+  position:{
+    x:(canvas.width/3.6),
+    y:canvas.height/1.13
+  },
+  scale:.02,
   imageSrc:'/game_assets/decorations/grass_3.png'
 })
 const sign1 = new Sprite({
-  size:{
-    height:canvas.height/4.8,
-    width:canvas.width/12
-  },
   position:{
     x:(canvas.width/1.15),
-    y:canvas.height/1.55
+    y:canvas.height/1.33
   },
+  scale:.15,
   imageSrc:'/game_assets/decorations/sign.png'
-})
-const grass2 = new Sprite({
-  size:{
-    height:canvas.height/40,
-    width:canvas.width/30
-  },
-  position:{
-    x:(canvas.width/2.65),
-    y:canvas.height/1.211
-  },
-  imageSrc:'/game_assets/decorations/grass_3.png'
 })
 //creating the shop
 const shop = new AnimateSprite({
-  size:{
-    height:canvas.height/1.7,
-    width:canvas.width/3.3
-  },
   frames:{
     framesTotal:6,
     frameRate:10
@@ -204,6 +165,7 @@ const shop = new AnimateSprite({
     x:(canvas.width/1.8),
     y:canvas.height/3.8
   },
+  scale:.64,
   imageSrc:'/game_assets/decorations/shop_anim.png'
 })
 // creating the player 1
@@ -222,15 +184,16 @@ const player1 = new Fighter({
     x:0,
     y:0
   },
-  ratio:.28,
   sprites:{
     idle:{
+      scale:.23,
       framesTotal:8,
       frameRate:10,
       forwardSrc:'game_assets/Martial_Hero/Sprites/Idle.png',
       backwardSrc:'game_assets/Martial_Hero/Sprites/Idle_backward.png'
     },
     run:{
+      scale:.23,
       framesTotal:8,
       frameRate:10,
       forwardSrc:'game_assets/Martial_Hero/Sprites/Run.png',
@@ -255,15 +218,16 @@ const player2 = new Fighter({
     x:0,
     y:0
   },
-  ratio:.28,
   sprites:{
     idle:{
+      scale:.23,
       framesTotal:8,
       frameRate:10,
       forwardSrc:'game_assets/Martial_Hero/Sprites/Idle.png',
       backwardSrc:'game_assets/Martial_Hero/Sprites/Idle_backward.png'
     },
     run:{
+      scale:.23,
       framesTotal:8,
       frameRate:10,
       forwardSrc:'game_assets/Martial_Hero/Sprites/Run.png',

@@ -12,12 +12,19 @@ class Fighter{
     //positions , size ,offsets etc
     this.color = color;
     this.position = position;
-    this.velocity = velocity;
     this.height = canvas.height/4.5;
     this.width = canvas.width/30;
-
-    this.lastkey;
     this.offset = offset;
+    
+    //health , attack
+    this.velocity = velocity;
+    this.isAttacking
+    this.helth=100
+    this.canJump =true;
+    this.jumpCount=0;
+    this.lastkey;
+    this.direction = direction
+
     //attackbox
     this.attackBox = {
       position :{
@@ -31,11 +38,7 @@ class Fighter{
         y:offset.y
       },
     }
-    //health , attack
-    this.isAttacking
-    this.helth=100
-    this.canJump =true;
-    this.jumpCount=0;
+    
     //sprites
     this.sprites=sprites
     let keys = Object.keys(this.sprites);
@@ -49,7 +52,6 @@ class Fighter{
       this.sprites[key].images.forward =forwardImg
     }
     this.currentSprite = sprites.idle
-    this.direction = direction
     //images
     this.image = this.currentSprite.images[this.direction];
     this.framesTotal=this.currentSprite.framesTotal;
@@ -94,10 +96,13 @@ class Fighter{
 
   update(){
     this.draw();
+
+    this.image = this.currentSprite.images[this.direction];
     this.framesTotal=this.currentSprite.framesTotal;
     this.frameRate=this.currentSprite.frameRate;
-    this.image = this.currentSprite.images[this.direction];
     this.ratio =(canvas.height/this.image.height)*this.currentSprite.scale;
+
+    //changing frames
     this.frameHold++;
     if(this.frameHold>this.frameRate){
       this.currentFrame++
@@ -107,6 +112,7 @@ class Fighter{
       this.currentFrame=0;
     }
 
+    //changng direction player 1
     if(this.lastkey === 'a'){
       this.attackBox.offset.x = this.attackBox.width - this.width;
       this.direction = 'backward'
@@ -115,7 +121,7 @@ class Fighter{
       this.direction='forward';
     }
 
-    
+    //changng direction player 2
     if(this.lastkey === 'ArrowRight'){
       this.attackBox.offset.x=0;
       this.direction='forward';
@@ -124,14 +130,18 @@ class Fighter{
       this.attackBox.offset.x = this.attackBox.width - this.width;
       this.direction = 'backward'
     }
+
+    //moving attackbox with player
     this.attackBox.position.x = this.position.x -this.attackBox.offset.x;
     this.attackBox.position.y = this.position.y+(this.height/4);
-
     this.attackBox.offset.x = this.offset.x;
     this.attackBox.offset.y = this.offset.y;
+
     if(this.position.y+this.velocity.y>=0){
       this.position.y+=this.velocity.y;
     }
+
+    //stoping player to go outside the canvas width
     if( 
       this.position.x+this.velocity.x>=0 &&
       this.position.x+this.width+this.velocity.x <= canvas.width
@@ -139,6 +149,7 @@ class Fighter{
       this.position.x+=this.velocity.x;
     }
 
+    //using gravity to pull down player unless they are allreay on the ground
     if(this.position.y + this.height + this.velocity.y>=canvas.height/1.11){
       this.velocity.y=0;
       this.canJump = true;

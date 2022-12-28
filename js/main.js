@@ -40,13 +40,17 @@ function animate(){
   player2.update();
 
   //individual sprite change
-  if((keys.a.pressed|| keys.d.pressed) && 
+  if(player1.velocity.y<0){
+    player1.currentSprite = player1.sprites.jump;
+    console.log("jumping")
+  }
+  else if((keys.a.pressed|| keys.d.pressed) && 
     (player1.lastkey === 'a' ||player1.lastkey === 'd')){
       player1.currentSprite = player1.sprites.run;
-    }
-    else{
-      player1.currentSprite = player1.sprites.idle;
-    }
+  }
+  else{
+    player1.currentSprite = player1.sprites.idle;
+  }
 
   if((keys.ArrowLeft.pressed|| keys.ArrowRight.pressed) && 
     (player2.lastkey === 'ArrowLeft' ||player2.lastkey === 'ArrowRight')){

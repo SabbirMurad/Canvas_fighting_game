@@ -198,6 +198,13 @@ const player1 = new Fighter({
       frameRate:10,
       forwardSrc:'game_assets/Martial_Hero/Sprites/Run.png',
       backwardSrc:'game_assets/Martial_Hero/Sprites/Run_backward.png'
+    },
+    jump:{
+      scale:.5,
+      framesTotal:2,
+      frameRate:10,
+      forwardSrc:'game_assets/Martial_Hero/Sprites/Jump.png',
+      backwardSrc:'game_assets/Martial_Hero/Sprites/Jump.png'
     }
   },
 })
@@ -232,6 +239,13 @@ const player2 = new Fighter({
       frameRate:10,
       forwardSrc:'game_assets/Martial_Hero/Sprites/Run.png',
       backwardSrc:'game_assets/Martial_Hero/Sprites/Run_backward.png'
+    },
+    jump:{
+      scale:.02,
+      framesTotal:2,
+      frameRate:5,
+      forwardSrc:'game_assets/Martial_Hero/Sprites/Jump.png',
+      backwardSrc:'game_assets/Martial_Hero/Sprites/Jump.png'
     }
   },
 })

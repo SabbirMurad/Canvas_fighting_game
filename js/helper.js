@@ -13,7 +13,7 @@ let timer = containerHelth.querySelector('.timer');
 
 let totalTime =90;
 canvas.width = window.innerWidth;
-canvas.height = canvas.width/2;
+canvas.height = canvas.width/1.96;
 const gravity = canvas.height/1200;
 //keys
 const keys ={

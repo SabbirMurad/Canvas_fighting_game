@@ -2,7 +2,7 @@
 const background1 = new Sprite({
   position:{
     x:0,
-    y:0
+    y:0-(canvas.height/3)
   },
   scale:1.13,
   imageSrc:'/game_assets/background/background_layer_1.png'
@@ -10,7 +10,7 @@ const background1 = new Sprite({
 const background2 = new Sprite({
   position:{
     x:0,
-    y:0
+    y:0-(canvas.height/6)
   },
   scale:1.13,
   imageSrc:'/game_assets/background/background_layer_2.png'
@@ -18,7 +18,7 @@ const background2 = new Sprite({
 const background3 = new Sprite({
   position:{
     x:0,
-    y:0
+    y:0-(canvas.height/6)
   },
   scale:1.13,
   imageSrc:'/game_assets/background/background_layer_3.png'
@@ -109,7 +109,7 @@ const rock3 = new Sprite({
 const fence1 = new Sprite({
   position:{
     x:(canvas.width/6),
-    y:canvas.height/1.24
+    y:canvas.height/1.23
   },
   scale:.09,
   imageSrc:'/game_assets/decorations/fence_1.png'
@@ -117,7 +117,7 @@ const fence1 = new Sprite({
 const fence2 = new Sprite({
   position:{
     x:0-(canvas.width/9),
-    y:canvas.height/1.24
+    y:canvas.height/1.23
   },
   scale:.09,
   imageSrc:'/game_assets/decorations/fence_2.png'
@@ -125,7 +125,7 @@ const fence2 = new Sprite({
 const fence3 = new Sprite({
   position:{
     x:(canvas.width/3.05),
-    y:canvas.height/1.24
+    y:canvas.height/1.23
   },
   scale:.09,
   imageSrc:'/game_assets/decorations/fence_2.png'
@@ -142,7 +142,7 @@ const grass1 = new Sprite({
 const grass2 = new Sprite({
   position:{
     x:(canvas.width/3.6),
-    y:canvas.height/1.13
+    y:canvas.height/1.125
   },
   scale:.02,
   imageSrc:'/game_assets/decorations/grass_3.png'

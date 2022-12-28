@@ -15,6 +15,7 @@ class Fighter{
     this.velocity = velocity;
     this.height = canvas.height/4.5;
     this.width = canvas.width/30;
+
     this.lastkey;
     this.offset = offset;
     //attackbox
@@ -69,12 +70,12 @@ class Fighter{
     // )
 
     // canvasContext.fillStyle = "green";
-    //   canvasContext.fillRect(
-    //     this.attackBox.position.x,
-    //     this.attackBox.position.y,
-    //     this.attackBox.width,
-    //     this.attackBox.height,
-    //   )
+    // canvasContext.fillRect(
+    //   this.attackBox.position.x,
+    //   this.attackBox.position.y,
+    //   this.attackBox.width,
+    //   this.attackBox.height,
+    // )
     
     canvasContext.drawImage(
       this.image,
